@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<groupId>br.com.desafio</groupId>
+	<artifactId>desafio</artifactId>
+	<name>desafio</name>
+	<version>0.0.1-SNAPSHOT</version>
+	<description>Sistema desafio desafio</description>
+
+	<packaging>pom</packaging>
+
+	<modules>
+		<module>desafio-service</module>
+		<module>desafio-business</module>
+		<module>desafio-repository</module>
+	</modules>
+
+	<properties>
+		<maven.compiler.source>1.8</maven.compiler.source>
+		<maven.compiler.target>1.8</maven.compiler.target>
+		<maven.compiler.plugin>3.8.1</maven.compiler.plugin>
+		
+		<spring.version>2.3.5.RELEASE</spring.version>
+		<spring.security.version>5.4.1</spring.security.version>
+		<postgres.version>42.2.16</postgres.version>
+		<jackson.version>2.11.2</jackson.version>
+		<h2database.version>1.4.200</h2database.version>
+		<swagger.version>3.0.0</swagger.version>
+		<lombok.version>1.18.16</lombok.version>
+	</properties>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>${maven.compiler.plugin}</version>
+				<configuration>
+					<source>${maven.compiler.source}</source>
+					<target>${maven.compiler.target}</target>
+				</configuration>
+			</plugin>
+		</plugins>
+
+	</build>
+
+	<dependencies>
+
+		<!-- https://mvnrepository.com/artifact/org.projectlombok/lombok -->
+		<dependency>
+			<groupId>org.projectlombok</groupId>
+			<artifactId>lombok</artifactId>
+			<version>${lombok.version}</version>
+			<scope>provided</scope>
+		</dependency>
+	</dependencies>
+</project>

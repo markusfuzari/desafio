@@ -1,0 +1,27 @@
+server:
+  port: 8080
+  servlet:
+    context-path: /api
+spring:
+  application:
+    name: api
+  jackson:
+    locale: pt_BR
+    time-zone: America/Fortaleza
+    serialization:
+      INDENT_OUTPUT: true
+  messages:
+    encoding: UTF-8
+  datasource:
+    driver-class-name: org.h2.Driver
+    url: jdbc:h2:mem:desafio
+    username: desafio
+    password: desafio
+  jpa:
+    hibernate:
+      ddl-auto: update
+      use-new-id-generator-mappings: true
+    show-sql: true
+    database: h2
+    database-platform: org.hibernate.dialect.H2Dialect
+    generate-ddl: true
