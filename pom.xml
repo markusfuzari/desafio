@@ -22,7 +22,7 @@
 		<maven.compiler.source>1.8</maven.compiler.source>
 		<maven.compiler.target>1.8</maven.compiler.target>
 		<maven.compiler.plugin>3.8.1</maven.compiler.plugin>
-		
+
 		<spring.version>2.3.5.RELEASE</spring.version>
 		<spring.security.version>5.4.1</spring.security.version>
 		<postgres.version>42.2.16</postgres.version>
@@ -32,24 +32,7 @@
 		<lombok.version>1.18.16</lombok.version>
 	</properties>
 
-	<build>
-		<plugins>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-compiler-plugin</artifactId>
-				<version>${maven.compiler.plugin}</version>
-				<configuration>
-					<source>${maven.compiler.source}</source>
-					<target>${maven.compiler.target}</target>
-				</configuration>
-			</plugin>
-		</plugins>
-
-	</build>
-
 	<dependencies>
-
-		<!-- https://mvnrepository.com/artifact/org.projectlombok/lombok -->
 		<dependency>
 			<groupId>org.projectlombok</groupId>
 			<artifactId>lombok</artifactId>
@@ -57,4 +40,5 @@
 			<scope>provided</scope>
 		</dependency>
 	</dependencies>
+
 </project>
