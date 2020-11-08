@@ -17,7 +17,17 @@ import org.springframework.web.bind.annotation.RestController;
 
 import br.com.desafio.business.SetorBusiness;
 import br.com.desafio.models.Setor;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiResponse;
+import io.swagger.annotations.ApiResponses;
+import io.swagger.annotations.Authorization;
 
+@Api(value = "Setores", authorizations = @Authorization(value="USER, ADMIN", scopes = {}))
+@ApiResponses(value = { 
+		@ApiResponse(code = 403, message = "Você não tem permissão para acessar este recurso"),
+		@ApiResponse(code = 500, message = "Foi gerada uma exceção"), 
+})
 @RestController
 @RequestMapping(value = "setores")
 public class SetorController {
@@ -25,12 +35,16 @@ public class SetorController {
 	@Autowired
 	private SetorBusiness setorBusiness;
 
+	@ApiOperation(value = "Listar todos os setores")
+	@ApiResponses(value = { @ApiResponse(code = 200, message = "Retorna a lista de setores") })
 	@GetMapping
 	public ResponseEntity<List<Setor>> listarTodos() {
 		List<Setor> lista = setorBusiness.listarTodos();
 		return ResponseEntity.ok(lista);
 	}
 
+	@ApiOperation(value = "Listar os setores paginado")
+	@ApiResponses(value = { @ApiResponse(code = 200, message = "Retorna a lista paginada de setores") })
 	@GetMapping("page")
 	public ResponseEntity<Page<Setor>> listarTodosPaginado(Pageable pageable) {
 		Page<Setor> page = setorBusiness.listarPaginado(pageable);

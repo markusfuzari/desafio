@@ -7,6 +7,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.AllArgsConstructor;
@@ -15,26 +17,28 @@ import lombok.Data;
 
 @Data
 @Builder
+@ApiModel(value = "Pessoas")
+@JsonPropertyOrder({"name", "title", "description"})
 @AllArgsConstructor
 @Entity
 @Table(name = "PESSOAS")
-@ApiModel(value = "Pessoas")
 public class Pessoas {
 	
-	@ApiModelProperty(value = "Código da pessoa")
+	
 	@Id
+	@ApiModelProperty
 	@Column(name = "CD_PESSOAS")
 	private Long id;
 	
-	@ApiModelProperty(value = "Nome da pessoa")
+	@ApiModelProperty
 	@Column(name = "NM_PESSOAS")
 	private String nome;
 	
-	@ApiModelProperty(value = "Carreira da pessoa")
+	@ApiModelProperty
 	@Column(name = "DS_CARREIRA")
 	private String carreira;
 	
-	@ApiModelProperty(value = "Setor da pessoa")
+	@ApiModelProperty
 	@ManyToOne
 	@JoinColumn(name = "CD_SETOR")
 	private Setor setor;

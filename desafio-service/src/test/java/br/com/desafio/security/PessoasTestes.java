@@ -10,8 +10,12 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 import org.hamcrest.Matcher;
+import org.junit.FixMethodOrder;
 import org.junit.Test;
+import org.junit.jupiter.api.MethodOrderer;
+import org.junit.jupiter.api.TestMethodOrder;
 import org.junit.runner.RunWith;
+import org.junit.runners.MethodSorters;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -28,6 +32,8 @@ import br.com.desafio.models.Pessoas;
 @RunWith(SpringRunner.class)
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.DEFINED_PORT)
 @AutoConfigureMockMvc
+@TestMethodOrder(MethodOrderer.Alphanumeric.class)
+@FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class PessoasTestes {
 	@Autowired
 	private MockMvc mockMvc;
@@ -40,7 +46,7 @@ public class PessoasTestes {
 	
 	@Test
 	@WithMockUser(username = "admin", password = "admin", roles = "ADMIN")
-	public void rotaGetPessoas() throws Exception {
+	public void rota01GetPessoas() throws Exception {
 		
 		Matcher<String> matcher =
 		        allOf(containsString("National Assurance Architect"),
@@ -55,7 +61,7 @@ public class PessoasTestes {
 	
 	@Test
 	@WithMockUser(username = "desafio", password = "desafio", roles = "USER")
-	public void rotaGetPessoasSemPermissao() throws Exception {
+	public void rota02GetPessoasSemPermissao() throws Exception {
 		
 		mockMvc.perform(
 				get("/pessoas")
@@ -65,7 +71,7 @@ public class PessoasTestes {
 	
 	@Test
 	@WithMockUser(username = "admin", password = "admin", roles = "ADMIN")
-	public void rotaGetPessoasPorNomeSetor() throws Exception {
+	public void rota03GetPessoasPorNomeSetor() throws Exception {
 		
 		Matcher<String> matcher =
 		        allOf(containsString("National Assurance Architect"),
@@ -80,7 +86,7 @@ public class PessoasTestes {
 	
 	@Test
 	@WithMockUser(username = "admin", password = "admin", roles = "ADMIN")
-	public void rotaPostPessoas() throws Exception {
+	public void rota04PostPessoas() throws Exception {
 		
 		Pessoas pessoas = Pessoas.builder().id(350L).build();
 		
@@ -93,7 +99,7 @@ public class PessoasTestes {
 	
 	@Test
 	@WithMockUser(username = "admin", password = "admin", roles = "ADMIN")
-	public void rotaPutPessoas() throws Exception {
+	public void rota05PutPessoas() throws Exception {
 		
 		Pessoas pessoas = pessoasBusiness.recuperarPorId(71L);
 		pessoas.setNome("Nome Alterado");
@@ -112,7 +118,7 @@ public class PessoasTestes {
 	
 	@Test
 	@WithMockUser(username = "admin", password = "admin", roles = "ADMIN")
-	public void rotaDeletePessoas() throws Exception {
+	public void rota06DeletePessoas() throws Exception {
 		
 		mockMvc.perform(
 				delete("/pessoas/{id}",5)

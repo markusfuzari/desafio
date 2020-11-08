@@ -22,8 +22,9 @@ import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
 import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
+import io.swagger.annotations.Authorization;
 
-@Api(value = "Pessoa")
+@Api(value = "Pessoas", authorizations = @Authorization(value="ADMIN", scopes = {}))
 @ApiResponses(value = { 
 		@ApiResponse(code = 403, message = "Você não tem permissão para acessar este recurso"),
 		@ApiResponse(code = 500, message = "Foi gerada uma exceção"), 
@@ -54,8 +55,8 @@ public class PessoasController {
 	@ApiOperation(value = "Retorna uma lista de pessoas pelo 'id' do setor")
 	@ApiResponses(value = { @ApiResponse(code = 200, message = "Retorna a lista de pessoas pelo 'id' do setor") })
 	@GetMapping("setor/id/{id}")
-	public ResponseEntity<List<Pessoas>> listarTodosPorSetorId(@ApiParam(name =  "id",
-		    type = "Long",value = "Cógido do setor",example = "1L", required = true) @PathVariable(required = true) Long id) {
+	public ResponseEntity<List<Pessoas>> listarTodosPorSetorId(@ApiParam(name =  "id", 
+	value = "Cógido do setor", example = "3"  , required = true) @PathVariable(required = true) Long id) {
 		List<Pessoas> lista = pessoasBusiness.listarTodosPorSetorId(id);
 		return ResponseEntity.ok(lista);
 	}
@@ -64,7 +65,7 @@ public class PessoasController {
 	@ApiResponses(value = { @ApiResponse(code = 200, message = "Retorna a lista de pessoas pelo 'id' do setor") })
 	@GetMapping("setor/nome/{nome}")
 	public ResponseEntity<List<Pessoas>> listarTodosPorSetorId(@ApiParam(name =  "id",
-		    type = "String",value = "Nome do setor",example = "Industrial", required = true) @PathVariable(required = true) String nome) {
+	value = "Nome do setor",example = "Industrial", required = true) @PathVariable(required = true) String nome) {
 		List<Pessoas> lista = pessoasBusiness.listarTodosPorSetorNome(nome);
 		return ResponseEntity.ok(lista);
 	}

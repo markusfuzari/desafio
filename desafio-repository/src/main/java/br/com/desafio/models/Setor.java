@@ -13,6 +13,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
@@ -23,24 +24,25 @@ import lombok.Data;
 @Data
 @Builder
 @AllArgsConstructor
+@ApiModel(value = "Setor")
+@JsonPropertyOrder({"name", "title", "description"})
 @Entity
 @Table(name = "SETOR")
-@ApiModel(value = "Setor")
 public class Setor {
 
 	
 	@Id
-	@ApiModelProperty(value = "Código do setor")
+	@ApiModelProperty
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "CD_SETOR")
 	private Long id;
 
-	@ApiModelProperty(value = "Nome do setor")
+	@ApiModelProperty
 	@Column(name = "NM_SETOR")
 	private String nome;
 
 	@JsonIgnore
-	@ApiModelProperty(value = "Lista de pessoa pertencentes ao setor")
+	@ApiModelProperty
 	@OneToMany(mappedBy = "setor", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	private List<Pessoas> pessoas;
 
