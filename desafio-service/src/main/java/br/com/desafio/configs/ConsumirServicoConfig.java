@@ -21,7 +21,6 @@ import br.com.desafio.models.Setor;
 @Configuration
 public class ConsumirServicoConfig {
 
-
 	@Autowired
 	private SetorBusiness setorBusiness;
 

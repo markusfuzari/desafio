@@ -16,12 +16,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.com.desafio.business.SetorBusiness;
-import br.com.desafio.models.Pessoas;
 import br.com.desafio.models.Setor;
-import io.swagger.annotations.ApiParam;
 
 @RestController
-@RequestMapping(value = "setor")
+@RequestMapping(value = "setores")
 public class SetorController {
 
 	@Autowired

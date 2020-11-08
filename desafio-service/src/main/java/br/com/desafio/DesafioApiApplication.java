@@ -20,5 +20,4 @@ public class DesafioApiApplication {
 		SpringApplication.run(DesafioApiApplication.class, args);
 	}
 
-	
 }
