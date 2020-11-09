@@ -7,7 +7,7 @@
 	<groupId>br.com.desafio</groupId>
 	<artifactId>desafio</artifactId>
 	<name>desafio</name>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>0.0.1-SNAPSHOT</version> 
 	<description>Sistema desafio desafio</description>
 
 	<packaging>pom</packaging>
@@ -34,16 +34,6 @@
 	</properties>
 
 	<dependencies>
-		<dependency>
-			<groupId>io.springfox</groupId>
-			<artifactId>springfox-swagger2</artifactId>
-			<version>${swagger.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>io.springfox</groupId>
-			<artifactId>springfox-swagger-ui</artifactId>
-			<version>${swagger.version}</version>
-		</dependency>
 		<dependency>
 			<groupId>org.projectlombok</groupId>
 			<artifactId>lombok</artifactId>

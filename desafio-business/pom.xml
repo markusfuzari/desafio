@@ -16,10 +16,8 @@
 		<dependency>
 			<groupId>br.com.desafio</groupId>
 			<artifactId>desafio-repository</artifactId>
-			<version>0.0.1-SNAPSHOT</version>
+			<version>${project.version}</version>
 		</dependency>
-		
-
 		<dependency>
 			<groupId>com.fasterxml.jackson.core</groupId>
 			<artifactId>jackson-annotations</artifactId>
