@@ -31,6 +31,7 @@
 		<swagger.version>3.0.0</swagger.version>
 		<springdoc.version>1.4.8</springdoc.version>
 		<lombok.version>1.18.16</lombok.version>
+		<heroku.version>3.0.4</heroku.version>
 	</properties>
 
 	<dependencies>
