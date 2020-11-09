@@ -25,15 +25,25 @@
 
 		<spring.version>2.3.5.RELEASE</spring.version>
 		<spring.security.version>5.4.1</spring.security.version>
-		<spring.security.test>5.4.1</spring.security.test>
 		<postgres.version>42.2.16</postgres.version>
 		<jackson.version>2.11.2</jackson.version>
 		<h2database.version>1.4.200</h2database.version>
 		<swagger.version>3.0.0</swagger.version>
+		<springdoc.version>1.4.8</springdoc.version>
 		<lombok.version>1.18.16</lombok.version>
 	</properties>
 
 	<dependencies>
+		<dependency>
+			<groupId>io.springfox</groupId>
+			<artifactId>springfox-swagger2</artifactId>
+			<version>${swagger.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>io.springfox</groupId>
+			<artifactId>springfox-swagger-ui</artifactId>
+			<version>${swagger.version}</version>
+		</dependency>
 		<dependency>
 			<groupId>org.projectlombok</groupId>
 			<artifactId>lombok</artifactId>

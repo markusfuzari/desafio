@@ -5,13 +5,13 @@ import java.util.List;
 import org.springframework.stereotype.Repository;
 
 import br.com.desafio.generic.GenericRepository;
-import br.com.desafio.models.Pessoas;
+import br.com.desafio.models.Pessoa;
 
 @Repository
-public interface PessoasRepository extends GenericRepository<Pessoas, Long> {
+public interface PessoasRepository extends GenericRepository<Pessoa, Long> {
 
-	public List<Pessoas> findBySetorId(Long id);
+	public List<Pessoa> findBySetorId(Long id);
 	
-	public List<Pessoas> findBySetorNome(String nome);
+	public List<Pessoa> findBySetorNome(String nome);
 
 }

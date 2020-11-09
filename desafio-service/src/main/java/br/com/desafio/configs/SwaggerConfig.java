@@ -17,7 +17,7 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 public class SwaggerConfig {
 	@Bean
 	public Docket api() {
-		return new Docket(DocumentationType.SWAGGER_2).select()
+		return new Docket(DocumentationType.OAS_30).select()
 				.apis(RequestHandlerSelectors.basePackage("br.com.desafio.controllers"))
 				.paths(PathSelectors.ant("/api/**"))
 				.build()
@@ -29,9 +29,9 @@ public class SwaggerConfig {
 		return new ApiInfoBuilder().title("Api Desafio")
 				.description("\" Projeto desafio Spring Boot Swagger \"")
 				.version("0.0.1-SNAPSHOT")
-				.license("Apache License Version 2.0").licenseUrl("https://www.apache.org/licenses/LICENSE-2.0\"")
 				.contact(
 						new Contact("Markus Fuzari", "https://www.linkedin.com/in/markus-vinicius-fuzari-barbosa-11813233/", "markusfuzari@gmail.com"))
 				.build();
 	}
+	
 }

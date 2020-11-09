@@ -24,3 +24,10 @@ spring:
     database: h2
     database-platform: org.hibernate.dialect.H2Dialect
     generate-ddl: true
+springfox:
+  documentation:
+    swagger:
+      v2:
+        enabled: true
+    open-api:
+      enabled: true

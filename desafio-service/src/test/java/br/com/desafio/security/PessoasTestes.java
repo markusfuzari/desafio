@@ -27,7 +27,7 @@ import org.springframework.test.web.servlet.MockMvc;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import br.com.desafio.business.PessoasBusiness;
-import br.com.desafio.models.Pessoas;
+import br.com.desafio.models.Pessoa;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.DEFINED_PORT)
@@ -88,12 +88,12 @@ public class PessoasTestes {
 	@WithMockUser(username = "admin", password = "admin", roles = "ADMIN")
 	public void rota04PostPessoas() throws Exception {
 		
-		Pessoas pessoas = Pessoas.builder().id(350L).build();
+		Pessoa pessoa = Pessoa.builder().id(350L).build();
 		
 		mockMvc.perform(
 				post("/pessoas")
 				.contentType(MediaType.APPLICATION_JSON)
-				.content(objectMapper.writeValueAsString(pessoas)))
+				.content(objectMapper.writeValueAsString(pessoa)))
 				.andExpect(status().isOk());
 	}
 	
@@ -101,8 +101,8 @@ public class PessoasTestes {
 	@WithMockUser(username = "admin", password = "admin", roles = "ADMIN")
 	public void rota05PutPessoas() throws Exception {
 		
-		Pessoas pessoas = pessoasBusiness.recuperarPorId(71L);
-		pessoas.setNome("Nome Alterado");
+		Pessoa pessoa = pessoasBusiness.recuperarPorId(71L);
+		pessoa.setNome("Nome Alterado");
 		
 		Matcher<String> matcher =
         allOf(containsString("Nome Alterado"),
@@ -111,7 +111,7 @@ public class PessoasTestes {
 		mockMvc.perform(
 				post("/pessoas")
 				.contentType(MediaType.APPLICATION_JSON)
-				.content(objectMapper.writeValueAsString(pessoas)))
+				.content(objectMapper.writeValueAsString(pessoa)))
 				.andExpect(status().isOk())
 				.andExpect(content().string(matcher));
 	}

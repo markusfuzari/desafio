@@ -3,8 +3,7 @@ package br.com.desafio.controllers;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -19,15 +18,9 @@ import br.com.desafio.business.SetorBusiness;
 import br.com.desafio.models.Setor;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
-import io.swagger.annotations.ApiResponse;
-import io.swagger.annotations.ApiResponses;
-import io.swagger.annotations.Authorization;
+import io.swagger.annotations.ApiParam;
 
-@Api(value = "Setores", authorizations = @Authorization(value="USER, ADMIN", scopes = {}))
-@ApiResponses(value = { 
-		@ApiResponse(code = 403, message = "Você não tem permissão para acessar este recurso"),
-		@ApiResponse(code = 500, message = "Foi gerada uma exceção"), 
-})
+@Api(value = "Setores", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
 @RestController
 @RequestMapping(value = "setores")
 public class SetorController {
@@ -35,36 +28,30 @@ public class SetorController {
 	@Autowired
 	private SetorBusiness setorBusiness;
 
-	@ApiOperation(value = "Listar todos os setores")
-	@ApiResponses(value = { @ApiResponse(code = 200, message = "Retorna a lista de setores") })
+	@ApiOperation(value = "Recuperar lista de todos os clientes.")
 	@GetMapping
 	public ResponseEntity<List<Setor>> listarTodos() {
 		List<Setor> lista = setorBusiness.listarTodos();
 		return ResponseEntity.ok(lista);
 	}
 
-	@ApiOperation(value = "Listar os setores paginado")
-	@ApiResponses(value = { @ApiResponse(code = 200, message = "Retorna a lista paginada de setores") })
-	@GetMapping("page")
-	public ResponseEntity<Page<Setor>> listarTodosPaginado(Pageable pageable) {
-		Page<Setor> page = setorBusiness.listarPaginado(pageable);
-		return ResponseEntity.ok(page);
-	}
-
+	@ApiOperation(value = "Cadastrar setor.")
 	@PostMapping
-	public ResponseEntity<Setor> salvar(@RequestBody Setor setor) {
+	public ResponseEntity<Setor> salvar(@ApiParam(value = "Setor") @RequestBody Setor setor) {
 		setor = setorBusiness.salvarOuAtualizar(setor);
 		return ResponseEntity.ok(setor);
 	}
 
+	@ApiOperation(value = "Alterar cadastro de setor.")
 	@PutMapping
-	public ResponseEntity<Setor> atualizar(@RequestBody Setor setor) {
+	public ResponseEntity<Setor> atualizar(@ApiParam(value = "Setor") @RequestBody Setor setor) {
 		setor = setorBusiness.salvarOuAtualizar(setor);
 		return ResponseEntity.ok(setor);
 	}
 
+	@ApiOperation(value = "Deletar cadastro de setor.")
 	@DeleteMapping("/{id}")
-	public ResponseEntity<Long> deletar(@PathVariable Long id) {
+	public ResponseEntity<Long> deletar(@ApiParam(value = "id", example = "1", type = "number", required = true) @PathVariable Long id) {
 		setorBusiness.deletar(id);
 		return ResponseEntity.ok(id);
 	}

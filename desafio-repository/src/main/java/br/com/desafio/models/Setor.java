@@ -21,10 +21,10 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 
+@ApiModel(value = "Setor", description = "Modelo Setor")
 @Data
 @Builder
 @AllArgsConstructor
-@ApiModel(value = "Setor")
 @JsonPropertyOrder({"name", "title", "description"})
 @Entity
 @Table(name = "SETOR")
@@ -32,19 +32,18 @@ public class Setor {
 
 	
 	@Id
-	@ApiModelProperty
+	@ApiModelProperty(notes = "Id do setor", dataType = "number", name="id", value = "3")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "CD_SETOR")
 	private Long id;
-
-	@ApiModelProperty
+	
+	@ApiModelProperty(notes = "Nome do setor", dataType = "string", name="nome", value = "Kids")
 	@Column(name = "NM_SETOR")
 	private String nome;
 
 	@JsonIgnore
-	@ApiModelProperty
 	@OneToMany(mappedBy = "setor", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-	private List<Pessoas> pessoas;
+	private List<Pessoa> pessoa;
 
 	public Setor() {
 		super();

@@ -15,7 +15,7 @@ import org.springframework.web.client.RestTemplate;
 import br.com.desafio.business.PessoasBusiness;
 import br.com.desafio.business.SetorBusiness;
 import br.com.desafio.models.DesafioRest;
-import br.com.desafio.models.Pessoas;
+import br.com.desafio.models.Pessoa;
 import br.com.desafio.models.Setor;
 
 @Configuration
@@ -52,14 +52,14 @@ public class ConsumirServicoConfig {
 				setor = setorBusiness.salvarOuAtualizar(setor);
 			}
 			
-			Pessoas pessoas = Pessoas.builder()
+			Pessoa pessoa = Pessoa.builder()
 					.id(desafioRest.getId())
 					.nome(desafioRest.getFirst_name().concat(" "+desafioRest.getLast_name()))
 					.carreira(desafioRest.getCareer())
 					.setor(setor)
 					.build();
 			
-			pessoasBusiness.salvarOuAtualizar(pessoas);
+			pessoasBusiness.salvarOuAtualizar(pessoa);
 		});
 
 		return lista;
