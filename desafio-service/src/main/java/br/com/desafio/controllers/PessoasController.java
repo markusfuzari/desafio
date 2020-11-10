@@ -22,7 +22,7 @@ import io.swagger.annotations.ApiParam;
 
 @Api(value = "Pessoas", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
 @RestController
-@RequestMapping(value = "pessoas", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+@RequestMapping(value = "pessoas")
 public class PessoasController {
 
 	@Autowired
