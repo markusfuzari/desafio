@@ -1,5 +1,6 @@
 package br.com.desafio.controllers;
 
+import org.springframework.http.MediaType;
 import io.swagger.annotations.Api;
 import org.springframework.web.bind.annotation.RestController;
 
