@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
+import br.com.desafio.controllers.GenericController;
 import br.com.desafio.business.PessoasBusiness;
 import br.com.desafio.models.Pessoa;
 import io.swagger.annotations.Api;
@@ -23,7 +23,7 @@ import io.swagger.annotations.ApiParam;
 @Api(value = "Pessoas", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
 @RestController
 @RequestMapping(value = "pessoas")
-public class PessoasController {
+public class PessoasController extends GenericController{
 
 	@Autowired
 	private PessoasBusiness pessoasBusiness;
